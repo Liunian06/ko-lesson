@@ -2,6 +2,14 @@
 
 > 把课程材料变成可持续学习、可反馈、可复习、可沉淀的 Obsidian 学习系统。
 
+## 一句话安装提示词
+
+把下面这句话复制给你的 AI 助手，即可让它帮你下载并安装这个技能：
+
+```text
+你需要帮我下载这个 skill：https://github.com/Liunian06/ko-lesson，然后帮我安装这个 skill。
+```
+
 [![许可证：MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-green.svg)](LICENSE)
 [![Codex 技能](https://img.shields.io/badge/Codex-%E6%8A%80%E8%83%BD-111827.svg)](SKILL.md)
 [![语言：中文](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-blue.svg)](SKILL.md)
