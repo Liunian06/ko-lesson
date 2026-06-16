@@ -1,160 +1,167 @@
 # ko-lesson
 
-> Turn course materials into an Obsidian-ready learning system, not just another pile of notes.
+> 把课程材料变成可持续学习、可反馈、可复习、可沉淀的 Obsidian 学习系统。
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827.svg)](SKILL.md)
-[![Language](https://img.shields.io/badge/language-%E4%B8%AD%E6%96%87-blue.svg)](SKILL.md)
+[![许可证：MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-green.svg)](LICENSE)
+[![Codex 技能](https://img.shields.io/badge/Codex-%E6%8A%80%E8%83%BD-111827.svg)](SKILL.md)
+[![语言：中文](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-blue.svg)](SKILL.md)
 
-`ko-lesson` is a Codex skill for generating structured course-learning and final-review materials from real course files. It reads the materials you provide, defines the learning boundary, rebuilds the course path from easy to hard, creates Obsidian-friendly Markdown files, and maintains a feedback loop that keeps adjusting lessons, exercises, exam papers, corrections, and remediation drills.
+`ko-lesson` 是一个面向课程学习和期末复习的 Codex 技能。它基于真实课程材料工作：先确认学习边界，再重建由浅入深的课程脉络，生成适合 Obsidian 使用的 Markdown 学习资料，并通过反馈、批改、错因记录和巩固卷持续调整学习路径。
 
-It is built for students who do not want a static summary. It creates a learning workspace that remembers progress, records weak points, links knowledge cards, supports bilingual materials, and turns final exam preparation into a traceable cycle.
+它不是“总结一下课件”的提示词，而是一套课程学习资料生成规范。目标是让学习者拿到一个能继续使用的学习工作区：有课程入口、有知识点卡片、有学习状态、有卡点记录、有期末考试、有答题卡、有详细答案，也有针对薄弱点反复巩固的闭环。
 
-## Why ko-lesson
+## 为什么需要 ko-lesson
 
-Most AI study workflows stop at "summarize this PDF". That is rarely enough for a real course.
+很多 AI 学习流程停在“帮我总结这个 PDF”。这对真实课程通常不够。
 
-`ko-lesson` is designed around a stronger contract:
+`ko-lesson` 关注的是完整学习过程：
 
-- Start from the actual course boundary, not generic internet knowledge.
-- Rebuild the learning route instead of copying the original chapter order.
-- Generate Obsidian-compatible notes with stable double links.
-- Explain concepts through intuition, formal definitions, examples, practice, and feedback.
-- Track learner background, weak points, progress, and transferable knowledge across courses.
-- Produce final exams, answer sheets, detailed solutions, grading records, and targeted remediation papers.
-- Separate source-backed content from AI-supplemented explanations.
+- 从真实材料出发，不凭空扩写成泛泛课程。
+- 先建立材料清单，明确哪些文件被纳入学习范围。
+- 重建学习顺序，而不是机械照搬课件章节。
+- 用 Obsidian 双链组织课程文件、知识点、媒体和反馈记录。
+- 同步维护学习状态、卡点错因、掌握度和学习者背景。
+- 支持中英双语材料、跨学科内容、代码、公式、案例和实验步骤。
+- 在期末复习阶段生成考试、答题卡、详细答案、批改记录和巩固卷。
+- 明确区分材料来源内容和 AI 补充解释，避免把补充内容伪装成原文。
 
-## Features
+## 核心能力
 
-### Course Material Mapping
+### 课程材料记录
 
-`ko-lesson` first creates `课程材料记录.md`, a source inventory that records what files are included, what each file contains, and how each file will be used in the course.
+`ko-lesson` 会先生成 `课程材料记录.md`，记录本次学习覆盖哪些文件、每个文件包含什么内容、在课程中承担什么作用，以及哪些内容明确不纳入本次学习。
 
-This prevents a common failure mode: generating polished notes that silently ignore half of the material.
+这一步用于避免一个常见问题：资料看起来很完整，但实际漏掉了关键文件。
 
-### Learning Path Redesign
+### 学习路线重构
 
-The skill generates `课程脉络.md` with a rebuilt learning order:
+技能会生成 `课程脉络.md`，重新设计学习顺序：
 
-- foundational concepts first
-- medium-difficulty core topics next
-- advanced topics, cases, projects, and open questions later
-- every unit tagged with difficulty, prerequisites, source files, and knowledge points
+- 先安排基础概念、背景知识、核心术语和必要前置知识。
+- 再安排主线知识、典型案例、常见任务和基础练习。
+- 最后安排高难度主题、复杂案例、综合项目和开放问题。
+- 每个学习单元都标注难度、知识点、来源文件、前置要求和排序理由。
 
-The goal is to make the course learnable, not merely mirror the textbook.
+目标不是复刻教材目录，而是把课程改造成更容易学会的路径。
 
-### Obsidian-Ready Output
+### Obsidian 友好输出
 
-Generated Markdown is designed for Obsidian:
+生成的 Markdown 文件会尽量适配 Obsidian：
 
-- stable `[[double links]]`
-- course files that reference each other
-- knowledge cards in `知识点/`
-- media files in `媒体库/`
-- callouts for questions, examples, tasks, and feedback
-- file names that match link names
+- 稳定的 `[[双链引用]]`
+- 课程文件之间互相链接
+- 核心知识点放入 `知识点/`
+- 图片、截图、图表和示意图放入 `媒体库/`
+- 使用提示块承载问题、示例、任务和反馈入口
+- 文件名和双链名称保持一致，减少链接失效
 
-### Feedback-Driven Learning
+### 逐课反馈模式
 
-By default, `ko-lesson` runs in progressive learning mode:
+默认情况下，`ko-lesson` 使用逐课反馈模式：
 
-1. Build the course map and first lesson.
-2. Wait for learner feedback.
-3. Update learning state, weak points, and background information.
-4. Decide whether to continue, review, explain differently, add practice, reduce difficulty, or reorder the path.
+1. 生成课程脉络、课程首页、学习状态、反馈记录、卡点错因记录和第一课。
+2. 等待学习者学习第一课并反馈。
+3. 根据反馈更新学习状态、掌握度、错因记录和学习者背景。
+4. 决定下一步是继续、补讲、换例子、加练、降阶，还是调整学习顺序。
 
-This makes the output useful for sustained learning rather than one-shot generation.
+这个模式适合长期学习，因为后续内容会根据真实反馈调整，而不是一次性堆完所有章节。
 
-### Full Review Mode
+### 全量期末复习模式
 
-When explicitly requested, `ko-lesson` can generate a full set of course files in one pass, including:
+当用户明确要求“一次性生成全部课程内容”或“全量生成所有课程文件”时，`ko-lesson` 可以一次性生成完整复习包，包括：
 
-- course homepage
-- material record
-- learning path
-- learning state
-- feedback log
-- weak-point and error log
-- lesson files
-- knowledge cards
-- bilingual terminology and translation notes
-- media index
-- final exam
-- answer sheet
-- detailed solutions
-- grading record
-- targeted remediation papers
+- 课程首页
+- 课程材料记录
+- 课程脉络
+- 学习状态
+- 学习反馈记录
+- 卡点与错因记录
+- 课程内容文件
+- 知识点卡片
+- 中英术语与翻译
+- 媒体库索引
+- 期末考试
+- 期末考试答题卡
+- 期末考试详细答案
+- 期末考试批改记录
+- 针对薄弱点的巩固卷
 
-### Final Exam Closed Loop
+即使使用全量模式，每一课也会保留反馈入口，后续仍可继续根据反馈调整。
 
-After the last unit is completed, the skill can generate:
+### 期末考试闭环
+
+当课程最后一节完成并通过反馈确认后，技能会生成：
 
 - `期末考试.md`
 - `期末考试-答题卡.md`
 - `期末考试-详细答案.md`
 
-After the learner fills in the answer sheet, it can grade the submission and create:
+学习者填写答题卡后，技能会批改并生成：
 
 - `期末考试-批改记录.md`
 - `期末考试-巩固卷-第2套.md`
 - `期末考试-巩固卷-第2套-答题卡.md`
 - `期末考试-巩固卷-第2套-批改记录.md`
 
-If mistakes remain, the remediation loop continues with the next numbered set. Remediation papers focus only on weak or uncertain knowledge points instead of mechanically repeating the entire exam.
+如果仍有错误、部分正确或不确定知识点，就继续生成下一套巩固卷。巩固卷只针对薄弱点，不机械重复整套期末考试。
 
-### Bilingual and Cross-Disciplinary Support
+### 双语与跨学科处理
 
-For English materials, technical terms, formulas, code, papers, or business cases, the skill requires three-layer translation:
+如果课程材料包含英文内容、代码、公式、论文、商业案例或实验步骤，`ko-lesson` 会要求同步生成：
 
-- literal translation
-- understanding-oriented translation
-- plain-language explanation
+- 原文翻译
+- 理解型翻译
+- 白话式翻译
+- 术语解释
+- 使用场景
+- 可操作拆解
+- 验证方法
 
-It also explains cross-disciplinary concepts without assuming that the learner already knows the background vocabulary of a single field.
+对于跨学科内容，技能不会默认学习者已经熟悉某个领域的黑话，而是会补足必要背景、说明领域差异，并帮助学习者建立可迁移的理解。
 
-## Installation
+## 安装
 
-Clone this repository into your Codex skills directory.
+把本仓库克隆到 Codex 技能目录。
 
 ### Windows
 
-```powershell
+```
 git clone https://github.com/Liunian06/ko-lesson.git "$env:USERPROFILE\.codex\skills\ko-lesson"
 ```
 
 ### macOS / Linux
 
-```bash
+```
 git clone https://github.com/Liunian06/ko-lesson.git ~/.codex/skills/ko-lesson
 ```
 
-Then restart Codex so the skill can be discovered.
+然后重启 Codex，让新的技能被加载。
 
-## Quick Start
+## 快速开始
 
-Put your course materials in a project folder, then ask Codex to use `ko-lesson`.
+把课程材料放到一个项目目录中，然后让 Codex 使用 `ko-lesson`。
 
-### Progressive Learning
+### 逐课学习
 
-Use this when you want to learn step by step and adjust based on feedback.
+适合边学边调整、希望根据反馈逐步生成后续课程内容的场景。
 
-```text
+```
 使用 ko-lesson，基于 学习材料/财务会计 生成课程学习资料。先生成课程脉络、课程首页、学习状态和第一课，输出到 学习历史/。
 ```
 
-### Full Final Review
+### 期末全量复习
 
-Use this when the exam is close and you need a complete review package immediately.
+适合考试临近，需要一次性得到完整复习资料的场景。
 
-```text
+```
 使用 ko-lesson，基于 学习材料/市场营销基础 一次性生成完整期末复习资料，输出到 学习历史/。
 ```
 
-### Continue From Feedback
+### 根据反馈继续学习
 
-After learning one lesson, give feedback in the generated format.
+学习完某一课后，可以按生成文件中的反馈入口填写：
 
-```text
+```
 我能复述的内容：
 我卡住的地方：
 当前难度评分，1 到 5：
@@ -162,13 +169,13 @@ After learning one lesson, give feedback in the generated format.
 这个知识点让我联想到的已学内容：
 ```
 
-Codex should then update the learning state, feedback record, weak-point log, knowledge cards, and learner background before deciding the next step.
+Codex 应该先更新学习状态、反馈记录、卡点错因记录、知识点卡片和学习者背景，再决定下一步生成什么内容。
 
-## Generated Structure
+## 输出结构
 
-A typical output looks like this:
+典型输出结构如下：
 
-```text
+```
 学习历史/
 ├─ 学习者背景信息.md
 └─ 课程名称-YYYYMMDDHHMM/
@@ -192,114 +199,114 @@ A typical output looks like this:
       └─ 第01课-知识点名称-用途.png
 ```
 
-## Core Workflow
+## 工作流
 
 ```mermaid
 flowchart TD
-    A["Collect course materials"] --> B["Confirm learning boundary"]
-    B --> C["Create material record"]
-    C --> D["Redesign course path"]
-    D --> E["Generate homepage, state, feedback, weak-point logs"]
-    E --> F["Generate lesson content and knowledge cards"]
-    F --> G{"Learner feedback?"}
-    G -->|"Needs help"| H["Review, explain differently, add practice, or lower difficulty"]
-    G -->|"Understood"| I["Move to next unit"]
+    A["收集课程材料"] --> B["确认学习边界"]
+    B --> C["生成课程材料记录"]
+    C --> D["重构课程脉络"]
+    D --> E["生成首页、状态、反馈和错因记录"]
+    E --> F["生成课程内容和知识点卡片"]
+    F --> G{"学习者是否反馈？"}
+    G -->|"需要帮助"| H["补讲、换例子、加练或降阶"]
+    G -->|"已经掌握"| I["进入下一个学习单元"]
     H --> F
-    I --> J{"Course complete?"}
-    J -->|"No"| F
-    J -->|"Yes"| K["Generate final exam, answer sheet, and detailed solutions"]
-    K --> L["Grade answer sheet"]
-    L --> M{"Weak points remain?"}
-    M -->|"Yes"| N["Generate targeted remediation paper"]
+    I --> J{"课程是否完成？"}
+    J -->|"否"| F
+    J -->|"是"| K["生成期末考试、答题卡和详细答案"]
+    K --> L["批改答题卡"]
+    L --> M{"是否仍有薄弱点？"}
+    M -->|"是"| N["生成针对性巩固卷"]
     N --> L
-    M -->|"No"| O["Finish review cycle"]
+    M -->|"否"| O["完成复习闭环"]
 ```
 
-## Design Principles
+## 设计原则
 
-### Source First
+### 来源优先
 
-Content from course materials must be cited in `来源依据`. AI-generated analogies, exercises, explanations, and examples must be marked as AI supplements.
+来自课程材料的内容必须在 `来源依据` 中标明来源文件、来源位置和使用方式。AI 生成的类比、练习、应用场景和补充解释必须标注为 `AI补充`。
 
-### Learnable Before Complete
+### 先可学，再完整
 
-The default mode does not generate every lesson immediately. It creates the course map and first lesson, then waits for feedback so the next lesson can match the learner's actual understanding.
+默认模式不会一次性机械生成所有章节，而是先生成课程地图和第一课，再根据学习者反馈决定后续内容。这样可以避免资料很完整但学习者实际用不起来。
 
-### Obsidian as the Learning Surface
+### Obsidian 是学习界面
 
-The skill treats Markdown files as a durable learning workspace. Links, callouts, media references, knowledge cards, and progress files are part of the system, not decoration.
+`ko-lesson` 把 Markdown 文件当作长期学习空间，而不是一次性导出的文本。双链、提示块、媒体库、知识点卡片和进度文件都是学习系统的一部分。
 
-### Exams as Diagnosis
+### 考试用于诊断
 
-Final exams are not only for scoring. They detect weak points, update records, and trigger targeted remediation until the learner can handle the missing knowledge.
+期末考试不只是打分工具。它用于发现薄弱点、更新记录、生成巩固卷，并推动学习者把错误知识点修复到可以做题和应用的程度。
 
-## When to Use
+## 适合使用的场景
 
-Use `ko-lesson` when you have:
+适合在以下场景使用 `ko-lesson`：
 
-- university course materials
-- slides, notes, PDFs, transcripts, assignments, or code
-- Chinese and English mixed materials
-- a final exam or review deadline
-- a need for Obsidian-ready learning files
-- a desire to learn over multiple sessions with feedback
+- 有大学课程材料需要系统复习。
+- 有课件、笔记、PDF、转写稿、作业、代码或案例。
+- 材料同时包含中文和英文。
+- 期末考试临近，需要完整复习包。
+- 希望生成 Obsidian 可长期使用的学习资料。
+- 希望学习过程能根据反馈持续调整。
 
-It is especially useful when a course is broad, messy, bilingual, interdisciplinary, or too dense to review by simple summarization.
+尤其适合材料庞杂、章节顺序不适合自学、跨学科内容多、英文术语多、考试范围宽的课程。
 
-## When Not to Use
+## 不适合使用的场景
 
-`ko-lesson` is not ideal when you only need:
+不建议在以下场景使用 `ko-lesson`：
 
-- a one-paragraph summary
-- a translation of a single page
-- a flashcard deck without source tracking
-- generic study advice unrelated to course files
-- an answer-only solution without learning process
+- 只需要一句话总结。
+- 只需要翻译单页内容。
+- 只想生成没有来源追踪的抽认卡。
+- 只需要泛泛学习建议，不基于课程文件。
+- 只要答案，不需要学习过程、错因记录或巩固闭环。
 
-## Repository Contents
+## 仓库内容
 
-```text
+```
 .
 ├─ SKILL.md
 ├─ LICENSE
 └─ README.md
 ```
 
-`SKILL.md` is the actual Codex skill definition. The README explains what it does and how to use it.
+`SKILL.md` 是实际的 Codex 技能定义；`README.md` 用于说明项目定位、安装方式、使用方式和设计原则。
 
-## Development
+## 开发
 
-This repository has no build step. To improve the skill:
+本仓库没有构建步骤。改进技能时建议遵守以下原则：
 
-1. Edit `SKILL.md`.
-2. Keep instructions specific, testable, and source-aware.
-3. Avoid adding requirements that cannot be verified from local files.
-4. Test with a small course folder before using it on a full course.
-5. Confirm generated outputs keep Obsidian links, source attribution, and feedback files consistent.
+1. 编辑 `SKILL.md`。
+2. 指令要具体、可验证、能从本地材料追溯。
+3. 不要加入无法验证的生成承诺。
+4. 先用小型课程目录测试，再用于完整课程。
+5. 检查生成结果是否保持 Obsidian 链接、来源依据、反馈文件和错因记录一致。
 
-## Roadmap
+## 路线图
 
-- Add example course fixtures.
-- Add validation scripts for generated course packages.
-- Add template snapshots for common course types.
-- Add bilingual sample output.
-- Add a compact quick-reference guide for final review mode.
+- 增加示例课程材料。
+- 增加课程包结构校验脚本。
+- 增加常见课程类型的模板快照。
+- 增加中英双语样例输出。
+- 增加期末全量复习模式的速查说明。
 
-## Contributing
+## 贡献
 
-Issues and pull requests are welcome.
+欢迎提交议题和合并请求。
 
-Good contributions are concrete:
+适合的贡献包括：
 
-- clarify an instruction that could be misread
-- add a missing output validation rule
-- improve the final exam remediation loop
-- strengthen source attribution
-- improve Obsidian compatibility
-- add examples that make the skill easier to test
+- 澄清容易误读的技能指令。
+- 补充缺失的输出校验规则。
+- 改进期末考试与巩固卷闭环。
+- 强化来源依据和 AI 补充标注。
+- 改善 Obsidian 兼容性。
+- 添加更容易测试的示例材料和示例输出。
 
-Please avoid changes that make the skill more generic at the cost of traceability. The core promise is structured, source-aware, feedback-driven learning.
+请避免把技能改得过于泛化，导致来源追踪和反馈闭环变弱。这个项目的核心承诺是：基于真实材料，生成结构化、可反馈、可复习、可持续沉淀的学习系统。
 
-## License
+## 许可证
 
-MIT License. See [LICENSE](LICENSE).
+本项目使用 MIT 许可证。详情见 [LICENSE](LICENSE)。
