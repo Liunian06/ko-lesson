@@ -10,6 +10,12 @@
 你需要帮我下载这个 skill：https://github.com/Liunian06/ko-lesson，然后帮我安装这个 skill。
 ```
 
+## 使用说明
+
+```text
+调用 ko-lesson 这个skill，阅读{你的课程材料的路径}下面的材料，在{你的目标输出路径}中一次性生成完整学习资料。
+```
+
 [![许可证：MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-green.svg)](LICENSE)
 [![Codex 技能](https://img.shields.io/badge/Codex-%E6%8A%80%E8%83%BD-111827.svg)](SKILL.md)
 [![语言：中文](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-blue.svg)](SKILL.md)
