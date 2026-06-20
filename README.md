@@ -20,6 +20,10 @@
 [![Codex 技能](https://img.shields.io/badge/Codex-%E6%8A%80%E8%83%BD-111827.svg)](SKILL.md)
 [![语言：中文](https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E4%B8%AD%E6%96%87-blue.svg)](SKILL.md)
 
+## Star 增长图
+
+[![ko-lesson Star 增长图](https://api.star-history.com/svg?repos=Liunian06/ko-lesson&type=Date)](https://star-history.com/#Liunian06/ko-lesson&Date)
+
 `ko-lesson` 是一个面向课程学习和期末复习的 Codex 技能。它基于真实课程材料工作：先确认学习边界，再重建由浅入深的课程脉络，生成适合 Obsidian 使用的 Markdown 学习资料，并通过反馈、批改、错因记录和巩固卷持续调整学习路径。
 
 它不是“总结一下课件”的提示词，而是一套课程学习资料生成规范。目标是让学习者拿到一个能继续使用的学习工作区：有课程入口、有知识点卡片、有学习状态、有卡点记录、有期末考试、有答题卡、有详细答案，也有针对薄弱点反复巩固的闭环。
