@@ -22,7 +22,13 @@
 
 ## Star 增长图
 
-[![ko-lesson Star 增长图](https://api.star-history.com/svg?repos=Liunian06/ko-lesson&type=Date)](https://star-history.com/#Liunian06/ko-lesson&Date)
+<a href="https://www.star-history.com/?repos=Liunian06%2Fko-lesson&type=timeline&logscale=&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Liunian06/ko-lesson&type=timeline&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Liunian06/ko-lesson&type=timeline&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Liunian06/ko-lesson&type=timeline&legend=top-left" />
+ </picture>
+</a>
 
 ## 为什么需要 ko-lesson
 
